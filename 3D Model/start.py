@@ -425,9 +425,8 @@ def toggle_layers():
 # All the scales depend on real data !! the scale ia on the moon with ratio 1,737.4/7= 248.2
 # All distances in Km are divided by factor 248.2
         destroy(track)
-       
+        map_key.enabled=False
         moon.texture=light_moon.texture=".\Texture\lroc_color_poles_4k.tif"
-        destroy(map_key)
         toggle_h=False
         
         track = Audio(sound_file_name='.\Sound\Layers.mp3', volume=30)
@@ -474,13 +473,13 @@ L.tooltip=Tooltip("This will show the Layers of The Moon depend on seismic data 
 L.on_click = toggle_layers
 
 toggle_h=False
+map_key=Panel(color=color.white,scale=((2*.1),(2*.21536)),texture=".\Texture\Mapkey.png",position=(.47,-.3),enabled=False)
 
 def topography():
     global toggle_h,track,map_key
     if not toggle_h:
         destroy(track)
         track = Audio(sound_file_name='.\Sound\Height map.mp3', volume=30)
-        map_key=Panel(color=color.white,scale=((2*.1),(2*.21536)),texture=".\Texture\Mapkey.png",position=(.47,-.3),enabled=False)
         moon.texture=light_moon.texture=".\Texture\Topography.png"
         map_key.enabled=True
         toggle_h=True
